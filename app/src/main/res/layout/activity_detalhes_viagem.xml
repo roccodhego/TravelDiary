@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imageViewFoto"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Foto da viagem" />
+
+    <TextView
+        android:id="@+id/textViewViagemId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="ID: "
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/textViewViagemNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nome da Viagem"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10sp"
+        android:paddingBottom="8dp" />
+
+
+    <EditText
+        android:id="@+id/textViewViagemData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data da Viagem"
+        android:paddingBottom="8dp" />
+
+    <EditText
+        android:id="@+id/textViewViagemNotas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notas"
+        android:paddingBottom="16dp" />
+
+    <Button
+        android:id="@+id/buttonAdicionarFoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Foto"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/buttonAtualizar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="Atualizar" />
+
+    <Button
+        android:id="@+id/buttonDeletar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deletar"/>
+
+    <Button
+        android:id="@+id/buttonVoltar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voltar"/>
+
+
+
+
+
+
+
+</LinearLayout>
