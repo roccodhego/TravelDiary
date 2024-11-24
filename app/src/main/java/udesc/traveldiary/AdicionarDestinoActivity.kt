@@ -1,14 +1,10 @@
 package udesc.traveldiary
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.os.Looper
 import android.provider.MediaStore
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
 import udesc.traveldiary.databinding.ActivityAdicionarDestinoBinding
 import java.io.File
 
@@ -87,7 +83,6 @@ class AdicionarDestinoActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     private fun salvarImagemLocal(uri: android.net.Uri): String? {

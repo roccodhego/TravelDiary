@@ -7,7 +7,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import udesc.traveldiary.databinding.ActivityDetalhesViagemBinding
@@ -105,7 +104,6 @@ class DetalhesViagemActivity : AppCompatActivity() {
             finish()
         }
 
-
     }
 
     private fun verificarPermissaoDeLeitura() {
@@ -113,14 +111,6 @@ class DetalhesViagemActivity : AppCompatActivity() {
             requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1)
         }
     }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 1 && grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Permissão negada. Imagem não pode ser carregada.", Toast.LENGTH_SHORT).show()
-        }
-    }
-
 
     private fun abrirCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -143,7 +133,7 @@ class DetalhesViagemActivity : AppCompatActivity() {
                 REQUEST_IMAGE_CAPTURE -> {
                     val imageBitmap = data?.extras?.get("data") as Bitmap
                     binding.imageViewFoto.setImageBitmap(imageBitmap)
-                    fotoPath = salvarFotoLocal(imageBitmap) // Atualiza o caminho da imagem
+                    fotoPath = salvarFotoLocal(imageBitmap)
                 }
                 REQUEST_PICK_IMAGE -> {
                     val selectedImageUri = data?.data
@@ -170,20 +160,18 @@ class DetalhesViagemActivity : AppCompatActivity() {
 
     private fun carregarImagem(fotoPath: String?) {
         if (fotoPath.isNullOrEmpty()) {
-            binding.imageViewFoto.setImageResource(R.drawable.ic_placeholder) // Substitua por uma imagem padrão
+            binding.imageViewFoto.setImageResource(R.drawable.ic_placeholder) // Substitui por uma imagem padrão
             return
         }
 
         try {
             if (fotoPath.startsWith("content://")) {
-                // Caso seja um URI, use ContentResolver
                 val uri = android.net.Uri.parse(fotoPath)
                 val inputStream = contentResolver.openInputStream(uri)
                 val bitmap = BitmapFactory.decodeStream(inputStream)
                 binding.imageViewFoto.setImageBitmap(bitmap)
                 inputStream?.close()
             } else {
-                // Caso seja um caminho local, carregue diretamente
                 val file = File(fotoPath)
                 if (file.exists()) {
                     val bitmap = BitmapFactory.decodeFile(file.absolutePath)
@@ -198,8 +186,5 @@ class DetalhesViagemActivity : AppCompatActivity() {
             binding.imageViewFoto.setImageResource(R.drawable.ic_placeholder)
         }
     }
-
-
-
 
 }
